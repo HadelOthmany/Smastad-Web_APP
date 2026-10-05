@@ -1,0 +1,74 @@
+﻿@model Småstad.Models.TownEvent
+
+@{
+    Layout = "_HeaderLayout";
+    ViewBag.Active = "EventList";
+    var picture = Model.Pictures?.FirstOrDefault();
+}
+
+<main>
+    <div class="container">
+        <section>
+
+            <h2>Kommande evenemang</h2>
+
+            <div class="flex-container">
+
+                <div class="flex-col-2">
+
+                    <p class="rounded">
+                        <span class="boxMonth">
+                            @Model.EventDate.ToString("MMM")
+                        </span>
+
+                        <span class="boxDate">
+                            @Model.EventDate.Day
+                        </span>
+                    </p>
+
+                    <h3>@Model.EventName</h3>
+
+                    <p class="flex-event">
+                        <span class="event">@Model.Organizer</span>
+                        <span class="event">@Model.Category</span>
+                        <span class="event">@Model.EventDate.ToString("dd MMM")</span>
+                        <span class="event">@Model.EventDate.ToString("HH:mm")</span>
+                    </p>
+
+                    <h4>Plats: @Model.Place</h4>
+
+                    <p>
+                        @Model.LongDescription
+                    </p>
+
+                    <h5>
+                        Arrangör: @Model.Organizer
+                    </h5>
+
+                    <p>
+                        <a asp-controller="Citizen"
+                           asp-action="EventList">
+                            Gå tillbaka till listan med evenemang
+                        </a>
+                    </p>
+
+                </div>
+
+                <div class="flex-col-2">
+
+                    @if (picture != null)
+                    {
+                        <p>
+                            <img src="@Url.Content("~/Pictures/" + picture.PictureName)"
+                                 alt="@picture.AltText"
+                                 width="400" />
+                        </p>
+                    }
+
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+</main>

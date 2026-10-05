@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "_EditorMainLayout";
+    ViewBag.Active = "StartEditor";
+}
+
+    <div class="container">
+
+        <section>
+
+            <h2 class="section-title">
+                Välkommen till Evenemangsbokning
+            </h2>
+
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <p class="success-message">
+                    @TempData["SuccessMessage"]
+                </p>
+            }
+
+            <h3 class="center">
+                Du kan som redaktör gå in och lägga till evenemang
+                för din förening
+            </h3>
+
+        </section>
+
+    </div>

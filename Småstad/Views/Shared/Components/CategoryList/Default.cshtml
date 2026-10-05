@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Category>
+
+<p class="form-group">
+    <label for="Category">Kategori: *</label>
+
+    <select name="Category" id="Category">
+        <option value="">Välj kategori</option>
+
+        @foreach (var category in Model)
+        {
+            <option value="@category.CategoryName">
+                @category.CategoryName
+            </option>
+        }
+    </select>
+</p>

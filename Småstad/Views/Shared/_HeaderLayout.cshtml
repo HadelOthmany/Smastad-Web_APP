@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "_FooterLayout";
+}
+<header>
+        <div class="header-hero-container">
+            <img src="/Images/heroTown.jpg" alt="Småstads Hotell" class="header-hero">
+        </div>
+        <div class="header-content">
+            <h1 class="header-title">Småstad</h1>
+            <p class="header-subtitle"> Kommunen där vi bryr oss om varandra</p>
+        </div>
+    </header>
+    <nav>
+        <div class="container nav-container">
+            <a asp-controller="Home" asp-action="Index" class="logo">Småstad Turistbyrå</a>
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index" 
+                    class="@(ViewBag.Active == "Home"? "active" : null)">Hem</a></li>
+                <li><a asp-controller="Citizen" asp-action="About" 
+                    class="@(ViewBag.Active == "About"? "active" : null)">Om oss</a></li>
+                <li><a asp-controller="Citizen" asp-action="Contact" 
+                    class="@(ViewBag.Active == "Contact"? "active" : null)">Kontakt</a></li>
+                <li><a asp-controller="Citizen" asp-action="EventList" 
+class="@(ViewBag.Active == "EventList"? "active" : null)">Evenemang</a></li>
+                <li><a asp-controller="Account" asp-action="Login"
+class="login @(ViewBag.Active == "Login" ? "active" : "")"> Logga in</a></li> 
+            </ul>
+        </div>
+    </nav>
+    @RenderBody()

@@ -1,0 +1,66 @@
+﻿@model TownEvent
+
+@{
+    Layout = "_EditorMainLayout";
+    ViewBag.Active = "BookEvent";
+}
+
+    <div class="container">
+      <section>
+        <h2 class="section-title">Lägg till evenemang</h2>
+        
+        <div class="flex-container">
+          <div class="flex-col">
+            <form class="book-form" asp-controller="Editor"
+            asp-action="BookEvent" 
+            method="post" enctype="multipart/form-data">
+              <fieldset>
+              <p class="form-group">
+               <label asp-for="EventName">Rubrik: *</label>
+               <input asp-for="EventName" type="text">
+               <span asp-validation-for="EventName"></span>
+              </p>
+              <p class="form-group">
+                <label asp-for="ShortDescription">Kort beskrivning: *</label>
+                <input asp-for="ShortDescription" type="text">
+                <span asp-validation-for="ShortDescription"></span>
+              </p>
+              <p class="form-group">
+                <label asp-for="EventDate">Datum och tid: *</label>
+                <input asp-for="EventDate" type="datetime-local">
+                <span asp-validation-for="EventDate"></span>
+              </p>
+              <p class="form-group">
+                <label asp-for="Place">Plats: *</label>
+                <input asp-for="Place" type="text">
+                <span asp-validation-for="Place"></span>
+              </p>
+                @await Component.InvokeAsync("CategoryList")
+                <span asp-validation-for="Category"></span>
+              <p class="form-group">
+                <label asp-for="LongDescription">Beskrivning: *</label>
+                <textarea asp-for="LongDescription" id="description" cols="55" rows="10"></textarea>
+                <span asp-validation-for="LongDescription"></span>
+              </p>
+               <p class="form-group">
+                <label asp-for="Organizer">Arrangör: *</label>
+                <input asp-for="Organizer" type="text">
+                <span asp-validation-for="Organizer"></span>
+              </p>
+              <p class="form-group">
+                <label for= "loadImage">Ladda upp bild: *</label>
+                <input type="file" name="loadImage" id="loadImage">
+              </p>   
+              <p class="form-group">
+                <label for="altText">Alternativ text till bilden:</label>
+                <input type="text" name="altText" id="altText" />
+              </p>          
+              <p class="form-group">
+                <input type="submit" class="btn btn-primary" value="Spara evenemang">
+              </p>
+              </fieldset>
+          </form>
+          </div>
+        </div>
+      </section>
+    </div>

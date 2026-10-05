@@ -1,0 +1,42 @@
+﻿@model IEnumerable<TownEvent>
+@{
+    Layout = "_HeaderLayout"; 
+    ViewBag.Active = "EventList";
+}
+<main>
+    <div class="container">
+        <section>
+            <h2>Kommande evenemang</h2>
+            <div class="flex-container">
+
+                @foreach (var item in Model)
+                {
+                    var picture = item.Pictures?.FirstOrDefault();
+                    <div class="flex-col-3">
+                        <div class="card">
+
+                            @if (picture != null)
+                            {
+                                <img src="@Url.Content("~/Pictures/" + picture.PictureName)"
+                                     alt="@picture.AltText"
+                                     class="card-img">
+                            }
+
+                            <div class="card-content">
+
+                                <h3 class="card-title"> @item.EventName</h3>
+
+                                <p class="card-text">@item.ShortDescription</p>
+
+                                <p class="card-text">@item.EventDate.ToString("yyyy-MM-dd HH:mm")</p>
+
+                                <a asp-controller="Citizen" asp-action="EventDetail" 
+                                asp-route-id="@item.TownEventId" class="button"> Se evenemang</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    </div>
+</main>

@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "_FooterLayout";    
+}
+
+  <header class="editor">
+    <div class="header-hero-container">
+      <img src="../Images/sommarvag-600x347.png" alt="Småstads landsväg" class="header-hero">
+    </div>
+</header>
+  <nav>
+    <div class="container nav-container">
+        <a asp-controller="Home" asp-action="Index"
+        class="logo@(ViewBag.Active == "Home" ? "active" : null)">Småstad Turistbyrå</a>
+      <ul>
+        <li><a asp-controller="Editor" asp-action="StartEditor" 
+            class="@(ViewBag.Active == "StartEditor" ? "active" : null)">Start</a></li>
+        <li><a asp-controller="Editor" asp-action="BookEvent" 
+            class="@(ViewBag.Active == "BookEvent" ? "active" : null)">Lägg till evenemang</a></li>
+        <li><a asp-controller="Account" asp-action="Logout" 
+            class="login @(ViewBag.Active == "Logout" ? "active" : "")">Logga ut </a></li>
+      </ul>
+    </div>
+  </nav>
+    @RenderBody()
+
